@@ -1,0 +1,14 @@
+[package]
+name = "bwrap-bpf-filter"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0.95"
+libc = "0.2.169"
+libseccomp = "0.3.0"
+
+[dependencies.clap]
+version = "4.5.27"
+default-features = false
+features = ["std", "derive", "help", "usage"]

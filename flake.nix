@@ -24,17 +24,23 @@
         pkgs = import nixpkgs {
           inherit system;
         };
+
+        package = {
+          libseccomp,
+          rustPlatform,
+        }:
+          rustPlatform.buildRustPackage {
+            pname = "bwrap-bpf-filter";
+            version = "0.1.0";
+
+            src = ./.;
+
+            cargoHash = "sha256-GlbNt3EXr+hmOCX4sy/zkx5u6HBtsxZ2xz2HlQtTkSk=";
+
+            buildInputs = [libseccomp];
+          };
       in {
-        packages.default = pkgs.rustPlatform.buildRustPackage {
-          pname = "bwrap-bpf-filter";
-          version = "0.1.0";
-
-          src = ./.;
-
-          cargoHash = "sha256-GlbNt3EXr+hmOCX4sy/zkx5u6HBtsxZ2xz2HlQtTkSk=";
-
-          buildInputs = [pkgs.libseccomp];
-        };
+        packages.default = pkgs.callPackage package {};
 
         devShells.default = pkgs.mkShell {
           buildInputs = [

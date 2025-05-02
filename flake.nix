@@ -35,7 +35,7 @@
 
             src = ./.;
 
-            cargoHash = "sha256-GlbNt3EXr+hmOCX4sy/zkx5u6HBtsxZ2xz2HlQtTkSk=";
+            cargoHash = "sha256-cqi5T/F5DC9nKL/LhM/E3lZf+GiARJ1spc+j23Mtb1Q=";
 
             buildInputs = [libseccomp];
           };
